@@ -5,6 +5,7 @@ android {
     def key_pass = project.hasProperty('KEYPASS')?KEYPASS:'123456'
     def store_pass = project.hasProperty('STOREPASS')?STOREPASS:'123456'
     def alias = project.hasProperty('ALIAS')?ALIAS:'taokeyun'
+    def apkname =project.hasProperty('APKNAME')?APKNAME:'app-release'
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
@@ -31,6 +32,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
+    }
+
+    //输出apk
+
+    applicationVariants.all { variant ->
+        if (variant.buildType.name.equals('release')) {
+            variant.getPackageApplication().outputDirectory = new File("/var/projects/kongbao/")
+            variant.getPackageApplication().outputScope.apkDatas.forEach { apkData ->
+                apkData.outputFileName = "${apkname}.apk"
+            }
+        }
+
     }
 }
 
