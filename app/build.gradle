@@ -2,9 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     def app_id = project.hasProperty('APP_ID')?APP_ID:'com.taokeyun.app'
-    def key_pass = project.hasProperty('KEY_PASS')?KEYPASS:'123456'
-    def store_pass = project.hasProperty('APP_ID')?STOREPASS:'123456'
-    def alias = project.hasProperty('APP_ID')?ALIAS:'taokeyun'
+    def key_pass = project.hasProperty('KEYPASS')?KEYPASS:'123456'
+    def store_pass = project.hasProperty('STOREPASS')?STOREPASS:'123456'
+    def alias = project.hasProperty('ALIAS')?ALIAS:'taokeyun'
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
